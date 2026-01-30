@@ -1,0 +1,817 @@
+/* --- 1. RESET & VARIABLES --- */
+:root {
+    --text-main: #111827;
+    --text-secondary: #4b5563;
+    --accent-blue-bg: #eef2ff;
+    --accent-blue-text: #4f46e5;
+    --bg-white: #ffffff;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --max-width: 1000px;
+    --padding-side: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-main);
+    background-color: var(--bg-white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- 2. UTILITY CLASSES --- */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-side);
+}
+
+.tag {
+    display: inline-block;
+    background-color: var(--accent-blue-bg);
+    color: var(--accent-blue-text);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+/* --- 3. HEADER / NAVBAR --- */
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    padding: 20px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Simulating the logo icon */
+.logo-icon {
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: black;
+    position: relative;
+}
+.logo-icon::before, .logo-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    left: 0;
+}
+.logo-icon::before { top: -6px; width: 70%; }
+.logo-icon::after { top: 6px; width: 50%; }
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--text-main);
+}
+
+/* Chevron for dropdowns */
+.chevron {
+    font-size: 0.7rem;
+    margin-top: 2px;
+}
+
+/* Mobile Menu Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-main);
+    transition: 0.3s;
+}
+
+/* --- 4. HERO SECTION --- */
+.hero {
+    padding: 100px 0 80px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    max-width: 800px;
+    margin: 0 auto;
+    letter-spacing: -0.02em;
+}
+
+/* --- 5. STORY SECTION --- */
+.story {
+    padding: 60px 0 100px;
+}
+
+.story-header {
+    margin-bottom: 40px;
+}
+
+.story h2 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* --- 6. RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    /* Mobile Navbar */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        /* Hide by default */
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        transition: 0.3s ease;
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+
+    /* Mobile Typography */
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .story h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Mobile Grid */
+    .story-grid {
+        grid-template-columns: 1fr; /* Stack columns */
+        gap: 24px;
+    }
+}
+
+/* --- 7. TIMELINE SECTION --- */
+.timeline-section {
+    padding: 0 0 100px;
+}
+
+.timeline-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Matches the layout of the story section */
+    gap: 40px;
+}
+
+.timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Space between timeline events */
+    position: relative;
+    border-left: 1px solid #e5e7eb; /* Faint grey vertical line */
+    padding-left: 0;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 20px 160px 1fr; /* Dot | Date/Title | Description */
+    gap: 20px;
+    align-items: baseline;
+    position: relative;
+}
+
+/* The Dot */
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #e5e7eb; /* Light grey dot */
+    border-radius: 50%;
+    /* Position the dot exactly on the border line */
+    position: relative;
+    left: -5.5px; 
+    top: 5px;
+}
+
+.timeline-meta {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+}
+
+.timeline-meta strong {
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.timeline-meta .date {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- 8. MISSION SECTION --- */
+.mission-section {
+    padding: 60px 0 120px;
+    text-align: left;
+}
+
+.mission-section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-main);
+}
+
+.mission-section p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+/* --- 9. QUOTE SECTION --- */
+.quote-section {
+    background-color: #F9FAFB; /* Very light grey background */
+    padding: 120px 0;
+    text-align: center;
+}
+
+.quote-section blockquote {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    font-weight: 400;
+}
+
+.quote-section .author {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.quote-section .author strong {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.quote-section .author span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* --- 10. UPDATED RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    /* Timeline Mobile */
+    .timeline-layout {
+        grid-template-columns: 1fr; /* Remove the empty left column */
+    }
+
+    .timeline-list {
+        border-left: 2px solid #e5e7eb; /* Stronger line on mobile */
+        padding-left: 20px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr; /* Stack title and text vertically */
+        gap: 8px;
+        padding-bottom: 10px;
+    }
+
+    .dot {
+        position: absolute;
+        left: -26px; /* Adjust dot position for mobile padding */
+    }
+
+    /* Mission Mobile */
+    .mission-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .quote-section {
+        padding: 80px 0;
+    }
+    
+    .quote-section blockquote {
+        font-size: 1.1rem;
+    }
+}
+
+.new-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Shared Utilities */
+.section {
+    padding: 60px 0;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #000;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #4b5563; /* Medium Grey */
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.content-center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #4361ee; /* Royal Blue from screenshot */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3046b5;
+}
+
+/* --- Section 1: Our Values --- */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Default mobile: 1 column */
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.value-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.icon-placeholder {
+    width: 64px;
+    height: 64px;
+    background-color: #f3f4f6; /* Light Grey Circle */
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.value-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.value-card p {
+    font-size: 0.95rem;
+    color: #6b7280; /* Light text */
+}
+
+/* --- Section 2: Join the Team --- */
+.team-image-container {
+    margin-top: 50px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.responsive-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 400px;
+}
+
+/* --- Media Queries (Desktop) --- */
+@media (min-width: 768px) {
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns */
+    }
+}
+
+@media (min-width: 1024px) {
+    .values-grid {
+        grid-template-columns: repeat(4, 1fr); /* Desktop: 4 columns */
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+}
+
+/* --- Section 4: Press & Contact --- */
+
+/* Specific background for this section */
+.press-section {
+    background-color: #f6f9fc; /* Very light blue background from screenshot */
+    padding: 80px 20px; /* Overrides generic section padding for this specific look */
+    border-radius: 8px; /* Optional: adds subtle rounding to the whole block */
+    margin-top: 40px;
+}
+
+/* Layout for Top Area */
+.press-header-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Press Badge */
+.badge-press {
+    display: inline-block;
+    background-color: #e0e7ff; /* Light indigo */
+    color: #4361ee;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.press-subtitle {
+    margin-left: 0; /* Resetting center alignment from previous section */
+    margin-bottom: 30px;
+    max-width: 400px;
+}
+
+/* Contact Card (White Box) */
+.contact-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    align-self: flex-start; /* Prevents stretching */
+    width: 100%;
+}
+
+.contact-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.contact-card p {
+    color: #6b7280;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+.email-btn {
+    display: inline-block;
+    background-color: #eef2ff;
+    color: #4361ee;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.email-btn:hover {
+    background-color: #e0e7ff;
+}
+
+/* Articles Grid */
+.press-articles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+/* Article Card Styles */
+.article-card {
+    height: 400px; /* Fixed height for consistency */
+    border-radius: 6px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Push text to bottom */
+    position: relative;
+    overflow: hidden;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+}
+
+.article-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.read-more {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* Card Specific Colors */
+.card-blue {
+    background-color: #4361ee; /* Royal Blue */
+}
+
+.card-dark {
+    background-color: #111827; /* Almost Black */
+}
+
+.card-navy {
+    background-color: #0f172a; /* Dark Navy - slightly different from dark */
+    /* Or specifically based on image: */
+    background-color: #0e2a5c; 
+}
+
+/* --- Responsive Adjustments for Press Section --- */
+
+@media (min-width: 768px) {
+    .press-header-layout {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .press-intro {
+        flex: 1;
+        padding-right: 40px;
+    }
+
+    .contact-card {
+        width: 320px; /* Fixed width for the contact card on desktop */
+        margin-top: -20px; /* Optional: Pulls it up slightly to match distinct layout */
+    }
+
+    .press-articles-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    }
+}
+
+.footer-wrapper {
+    width: 100%;
+    padding: 60px 20px 40px;
+}
+
+/* Investors Header Section */
+.investors-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.investors-header .tag {
+    background-color: #EBF5FF; /* Light blue pill background */
+    color: #006BFF; /* Blue text */
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.investors-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111;
+}
+
+/* Main Footer Container */
+.main-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Columns */
+.footer-col {
+    flex: 1;
+    min-width: 140px; /* Ensures columns don't get too squished */
+}
+
+/* Language Column Specifics */
+.lang-col {
+    flex: 0 0 120px; /* Fixed width for language column */
+    margin-right: 20px;
+}
+
+.lang-list li {
+    margin-bottom: 12px;
+}
+
+.lang-code {
+    font-weight: 700;
+    color: #111;
+    display: inline-block;
+    width: 25px;
+}
+
+/* Headings */
+.footer-col h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #111;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Lists and Links */
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 14px;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #555; /* Dark gray for links */
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-col ul li a:hover {
+    color: #006BFF; /* Hover color */
+}
+
+/* Social Icons */
+.social-col i {
+    color: #555;
+    font-size: 1rem;
+    width: 15px;
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+    border-top: 1px solid #eaeaea; /* Optional separator line */
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.footer-bottom a:hover {
+    color: #111;
+}
+
+.footer-bottom .bullet {
+    margin: 0 10px;
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+/* Responsive Design */
+
+/* Tablet: Wrap items a bit more */
+@media (max-width: 992px) {
+    .footer-container {
+        justify-content: flex-start;
+    }
+    .lang-col {
+        flex: 0 0 100%; /* Move language to top on tablet */
+        margin-bottom: 20px;
+    }
+}
+
+/* Mobile: Stack columns vertically */
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-col {
+        width: 100%;
+    }
+    
+    .investors-header h2 {
+        font-size: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .footer-bottom .bullet {
+        display: none; /* Hide bullets on mobile stack */
+    }
+}

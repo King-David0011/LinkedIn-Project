@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livestorm Pricing Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="pricing.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 12H21" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                <path d="M3 6H21" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                <path d="M3 18H15" stroke="black" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="brand-name">livestorm</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/About page/about.html">Products</a> <span class="arrow">⌄</span></li>
+            <li>Pricing</li>
+            <li>Customers</li>
+            <li>Our webinars <span class="arrow">⌄</span></li>
+            <li>Resources <span class="arrow">⌄</span></li>
+        </ul>
+        <div class="mobile-menu-icon">☰</div>
+    </nav>
+
+    <header class="hero">
+        <span class="badge">Pricing</span>
+        <h1>Powerful software.<br>Simple pricing.</h1>
+        <p class="subtitle">Livestorm enables your company to create a world-class video communication strategy. Simply choose the plan that best fits your needs.</p>
+    </header>
+
+    <section class="controls">
+        <div class="currency-dropdown">
+            € EUR <span class="arrow">⌄</span>
+        </div>
+
+        <div class="toggle-container">
+            <span class="toggle-label">Monthly</span>
+            <div class="toggle-switch active" id="billingToggle">
+                <div class="toggle-handle"></div>
+            </div>
+            <span class="toggle-label active-text">Yearly</span>
+            <span class="discount-tag">Save 10%</span>
+        </div>
+    </section>
+
+    <main class="pricing-container">
+        
+        <div class="pricing-grid webinar-grid">
+            <div class="card basic">
+                <h2>Basic</h2>
+                <p class="card-desc">A free plan to discover Livestorm.</p>
+                
+                <div class="card-content">
+                    <p class="small-header">Webinar Basic</p>
+                    <div class="price-large">Free</div>
+                    
+                    <ul class="feature-list">
+                        <li><span class="check-blue">✓</span> All features included</li>
+                        <li><span class="check-blue">✓</span> Unlimited webinars</li>
+                        <li><span class="check-blue">✓</span> Unlimited moderators</li>
+                        <li><span class="check-blue">✓</span> Instant meetings</li>
+                        <li><span class="check-blue">✓</span> <strong>Up to 10 registrants</strong> per webinar <span class="info-icon">i</span></li>
+                        <li><span class="check-blue">✓</span> <strong>Up to 20 minutes</strong> per webinar <span class="info-icon">i</span></li>
+                    </ul>
+
+                    <div class="input-group">
+                        <label>Live attendees limit add-ons <span class="info-icon">i</span></label>
+                        <div class="attendee-box selected disabled">
+                            <span class="count">10</span>
+                            <span class="cost">Included</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Number of hosts</label>
+                        <div class="host-input disabled">
+                            <span class="infinity">∞</span>
+                            <span class="unit">Free</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary">Get started for free</button>
+                    <p class="no-cc">No credit card required</p>
+                </div>
+            </div>
+
+            <div class="card premium">
+                <h2>Premium</h2>
+                <p class="card-desc">A premium experience with removed limitations to get the full benefits of Livestorm.</p>
+                
+                <div class="card-content">
+                    <p class="small-header">Webinar Premium</p>
+                    <div class="price-row">
+                        <span class="currency">€</span>
+                        <span class="amount">89</span>
+                        <span class="period">/ month, Billed annually</span>
+                    </div>
+                    
+                    <ul class="feature-list">
+                        <li><span class="check-blue">✓</span> All features included</li>
+                        <li><span class="check-blue">✓</span> Unlimited webinars</li>
+                        <li><span class="check-blue">✓</span> Unlimited moderators</li>
+                        <li><span class="check-blue">✓</span> Instant meetings</li>
+                        <li><span class="check-blue">✓</span> <strong>Up to 4 hours</strong> per webinar</li>
+                        <li><span class="check-blue">✓</span> <strong>Unlimited</strong> webinar registrants <span class="info-icon">i</span></li>
+                    </ul>
+
+                    <div class="input-group">
+                        <label>Live attendees limit add-ons <span class="info-icon">i</span></label>
+                        <div class="attendee-options">
+                            <div class="attendee-box selected">
+                                <span class="count">100</span>
+                                <span class="cost">included</span>
+                            </div>
+                            <div class="attendee-box">
+                                <span class="count">250</span>
+                                <span class="cost">+89€</span>
+                            </div>
+                            <div class="attendee-box">
+                                <span class="count">1,000</span>
+                                <span class="cost">+179€</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>How many host would you like ?</label>
+                        <div class="host-input-spinner">
+                            <input type="number" value="1" id="hostCount">
+                            <div class="spinner-controls">
+                                <button onclick="changeHost(1)">^</button>
+                                <button onclick="changeHost(-1)">v</button>
+                            </div>
+                            <span class="per-host">€89 /host</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary">Get started now</button>
+                </div>
+            </div>
+
+            <div class="card enterprise">
+                <h2>Enterprise</h2>
+                <p class="card-desc">An enterprise-grade experience with best-in-class service.</p>
+                
+                <div class="card-content">
+                    <div class="enterprise-header">Starting at 5+ hosts</div>
+                    
+                    <div class="check-row"><span class="check-black">✔</span> <strong>All Premium</strong> features</div>
+                    
+                    <p class="list-title">Custom Package and Additional Services</p>
+                    <ul class="feature-list compact">
+                        <li><span class="check-black">✔</span> Multiple workspaces with unified billing</li>
+                        <li><span class="check-black">✔</span> Premium training with a Livestorm expert</li>
+                        <li><span class="check-black">✔</span> SLA</li>
+                        <li><span class="check-black">✔</span> Dedicated CSM</li>
+                        <li><span class="check-black">✔</span> Floating licences <span class="info-icon">i</span></li>
+                        <li><span class="check-black">✔</span> Wire transfer payment</li>
+                        <li><span class="check-black">✔</span> One-off attendees limit boost</li>
+                        <li><span class="check-black">✔</span> Priority support</li>
+                        <li><span class="check-black">✔</span> Executive Business Reviews</li>
+                        <li><span class="check-black">✔</span> SSO <span class="tag-coming">Coming soon</span></li>
+                    </ul>
+
+                    <div class="spacer"></div>
+                    <button class="btn btn-dark">Contact sales</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-grid meet-grid">
+            
+            <div class="card basic-meet">
+                <p class="small-header">Meet Basic</p>
+                <div class="price-large">Free</div>
+
+                <ul class="feature-list">
+                    <li><span class="check-blue">✓</span> All features included</li>
+                    <li><span class="check-blue">✓</span> Livestorm webinar basic</li>
+                </ul>
+
+                <p class="section-label">Instant meetings <span class="info-icon">i</span></p>
+                <ul class="feature-list">
+                    <li><span class="check-blue">✓</span> Unlimited meetings</li>
+                    <li><span class="check-blue">✓</span> 1 meeting room</li>
+                    <li><span class="check-blue">✓</span> Up to <strong>4 participants</strong> per meeting</li>
+                </ul>
+
+                <p class="section-label">Scheduled meetings <span class="beta-tag">Beta</span> <span class="info-icon">i</span></p>
+                <ul class="feature-list">
+                    <li><span class="check-blue">✓</span> Unlimited moderators</li>
+                    <li><span class="check-blue">✓</span> Up to <strong>20 minutes</strong> per meeting</li>
+                    <li><span class="check-blue">✓</span> Up to <strong>4 participants</strong> per meeting</li>
+                    <li><span class="check-blue">✓</span> Meeting recording <strong>disabled</strong></li>
+                </ul>
+
+                <button class="btn btn-primary">Get started for free</button>
+                <p class="no-cc">No credit card required</p>
+            </div>
+
+            <div class="card premium-meet">
+                <p class="small-header">Meet Premium</p>
+                <div class="price-promo">
+                    <span class="strikethrough">€ 28</span> 
+                    <span class="free-text">Free</span>
+                </div>
+                <p class="promo-sub">for Covid-19 relief</p>
+
+                <ul class="feature-list">
+                    <li><span class="check-blue">✓</span> All features included</li>
+                    <li><span class="check-blue">✓</span> Livestorm webinar basic</li>
+                </ul>
+
+                <p class="section-label">Instant meetings <span class="info-icon">i</span></p>
+                <ul class="feature-list">
+                    <li><span class="check-blue">✓</span> Unlimited meetings</li>
+                    <li><span class="check-blue">✓</span> Unlimited meeting rooms</li>
+                    <li><span class="check-blue">✓</span> Up to <strong>12 participants</strong> per meeting</li>
+                </ul>
+
+                <p class="section-label">Scheduled meetings <span class="beta-tag">Beta</span> <span class="info-icon">i</span></p>
+                <ul class="feature-list">
+                    <li><span class="check-blue">✓</span> Unlimited moderators</li>
+                    <li><span class="check-blue">✓</span> Up to <strong>4 hours</strong> per meeting</li>
+                    <li><span class="check-blue">✓</span> Up to <strong>12 participants</strong> per meeting</li>
+                    <li><span class="check-blue">✓</span> Meeting recording <strong>enabled</strong></li>
+                </ul>
+
+                <button class="btn btn-primary">Get started now</button>
+            </div>
+            
+            <div class="learn-more-container">
+                <a href="#" class="learn-more-link"></a>
+            </div>
+
+        </div>
+
+    </main>
+
+     <!--Paid Features-->
+    <section class="paid-features">
+        <h2>All paid plans include:</h2>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="icon-placeholder"></div>
+                <h3>Premium Customer Support</h3>
+                <p>Support office hours are: 10:00am - 2:00am CET / 1:00 am - 5:00pm PT, Monday to Friday. In English, French and Spanish.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="icon-placeholder"></div>
+                <h3>High Security Standards</h3>
+                <p>Livestorm is fully GDPR compliant. Your data is encrypted and backed up regularly.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="icon-placeholder"></div>
+                <h3>Access to our Private Roadmap</h3>
+                <p>Livestorm customers get access to our roadmap and will be notified in real-time when a fix or a new feature is released.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you have a plan for more than 1,000 attendees?</span>
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we offer custom enterprise plans for large events. Please contact our sales team for a quote tailored to your specific needs.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is a host?</span>
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>A host is a user who can schedule, start, and manage webinars or meetings. You can add as many hosts as you need to your workspace.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How does the trial work?</span>
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can sign up for free and access all features immediately. The free plan has no time limit, but does have usage limits (like session duration).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you offer pricing per webinar?</span>
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No, Livestorm is a subscription service. However, you can choose a monthly plan and cancel at any time if you only need it for a specific event.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do I have a limit on the number of webinars I can host per month?</span>
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No! All our plans, including the free Basic plan, allow you to host an unlimited number of webinars.</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-secondary">Show more questions</button>
+    </section>
+
+    <!--All Features-->
+    <section class="detailed-features">
+        <div class="features-container">
+            <aside class="features-sidebar">
+                <p class="sidebar-title">FEATURES</p>
+                <nav class="features-nav">
+                    <a href="#webinar-ux" class="nav-item active">Webinar UX</a>
+                    <a href="#advanced-features" class="nav-item">Advanced Webinar Features</a>
+                    <a href="#analytics" class="nav-item">Analytics</a>
+                    <a href="#integration" class="nav-item">Integration</a>
+                </nav>
+            </aside>
+
+            <div class="features-main">
+                <h2 class="section-main-title">All features included</h2>
+                
+                <div id="webinar-ux" class="feature-category-block">
+                    <h3 class="category-header">Webinar UX</h3>
+                    
+                    <div class="features-grid-detailed">
+                        <div class="feature-card-detailed">
+                            <h4>Unlimited HD webinars</h4>
+                            <p>Host as many webinars as you want. Do them in high definition (depending on your bandwidth).</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>Screensharing</h4>
+                            <p>Here's a webinar basic. Share your screen with your attendees. Hit a button and that's it.</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>Browser-based webinars</h4>
+                            <p>Why on earth should you download an app? All you need is a URL and a modern browser.</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>Chat during webinars</h4>
+                            <p>The good ol' chat. We gathered all the best practices to make it super simple to use.</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>Q&A during webinars</h4>
+                            <p>Attendees can upvote any relevant question. Choosing questions to answer just became easier.</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>Custom registration page</h4>
+                            <p>Beautiful design converts better. We generate well designed registration pages. You deserve it.</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>Unlimited replay</h4>
+                            <p>Your webinar is automatically recorded. People who didn't show up can view a replay of your webinar. No storage limit.</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>Dial-in by phone</h4>
+                            <p>Can't join with your internet connection? Follow the conversation by phone.</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>Custom branding</h4>
+                            <p>Your brand needs to be identified in seconds. Add your logo, a cover image and your colors.</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>Guest presenters</h4>
+                            <p>Add guests to your webinar before your webinar and invite them on stage. Up to 6 people on stage at the same time!</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>One-click invite on stage</h4>
+                            <p>Invite any attendee to speak on stage with ease. Enable anyone in your audience to share his knowledge or ask questions.</p>
+                        </div>
+                        <div class="feature-card-detailed">
+                            <h4>Email invitation</h4>
+                            <p>Import your contacts and invite them to your webinar with our very simple emailing tool.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="advanced-features" class="feature-category-block">
+                    <br>
+                    <br>
+                    <br>
+    <h3 class="category-header">Advanced Webinar Features</h3>
+    
+    <div class="features-grid-detailed">
+        <div class="feature-card-detailed">
+            <h4>Automatic email reminders</h4>
+            <p>We handle email reminders and follow ups for you to increase your participation rate.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Unlimited replay storage</h4>
+            <p>Replays are stored... Forever! Never worry about missing a replay or storage capacity.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Realtime email statuses</h4>
+            <p>We provide realtime information on the delivery of all your webinar emails: invites, reminders and follow ups.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Share presentations</h4>
+            <p>Upload and share presentation slides in a few clicks. Then show your slides like any Powerpoint presentation.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Multi-language support</h4>
+            <p>Livestorm is available in English, French, German, Portuguese, Spanish, Korean, Russian, Danish, Dutch, Polish, Swedish, Italian, Norwegian, Lithuanian, Czech, Turkish and Finnish.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Recurring events</h4>
+            <p>Host one webinar with multiple sessions and keep the same landing page. Visitors can select their date of choice from your registration page.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Live answer notification</h4>
+            <p>Display a notification when answering a question from your audience during the webinar, making it easier to follow the flow of discussions.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Call to action (CTA)</h4>
+            <p>Direct your webinar attendees to a page or promotional offer by displaying a CTA.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>1000 live attendees</h4>
+            <p>Host large online events and webinars with up to 1000 live attendees.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Team-wide accounts</h4>
+            <p>More than one person running webinars in your company? Set up a team account and invite as many people as you need.</p>
+        </div>
+
+        <div class="feature-card-detailed">
+            <h4>Embed forms</h4>
+            <p>Got your own landing pages? Embed your registration form. People register on your website and we catch the data.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Pre-recorded video</h4>
+            <p>Share a pre-recorded screencast or any video presentation during your webinar. Just upload and play.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Share Youtube videos</h4>
+            <p>Instantly share a video from Youtube. Just paste the link to start broadcasting.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>On-demand webinars</h4>
+            <p>Upload your recorded video and let your audience watch your webinars on their terms thanks to our iframe mode.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Private webinars</h4>
+            <p>Want to host a VIP webinar for specific people? Create a private event that only your invitees can join.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Paid webinars</h4>
+            <p>Host paid webinars for your paying registrants only! You can set up paid webinars and collect payment via Zapier.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Registrant moderation</h4>
+            <p>Add a moderation layer for your public events by deciding which registrants can and cannot access the webinar.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Company page</h4>
+            <p>Publish your webinars to a public company page. Embed the upcoming events anywhere.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Email customization</h4>
+            <p>Send automated personalized emails campaigns using email variables based on the Liquid templating language.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>GDPR Ready</h4>
+            <p>We take your privacy and data security seriously and follow the GDPR directives.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Email filter</h4>
+            <p>Filter out the noise. Only accept registrations to your webinar from visitors entering a work email.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Media kit</h4>
+            <p>Need an image to promote your webinar? We provide all the images at the right dimensions.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Automated webinars</h4>
+            <p>Don't have time to run all the webinars by yourself? Use automated webinars to start a presentation at a given date.</p>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div id="analytics" class="feature-category-block">
+    <h3 class="category-header">Analytics</h3>
+    
+    <div class="features-grid-detailed">
+        <div class="feature-card-detailed">
+            <h4>Polls during webinars</h4>
+            <p>Create polls during your webinars, publish them and see the answers in real-time.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Custom registration form</h4>
+            <p>Need more information on your attendees? Now you can create every custom field you need.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Data enrichment</h4>
+            <p>Need more info about your attendees? We automatically enrich their profiles.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Analytics report</h4>
+            <p>After your webinar you can analyze all your data with our powerful analytics tool.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Replay analytics</h4>
+            <p>Wonder how many people watched your replays? Access analytics for all your replays, even those you already published.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Source tracking</h4>
+            <p>Capture the source of registrations. Get the UTMs and referrers for any webinar registrants.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Participation report</h4>
+            <p>Know exactly how many registrants showed up to your live webinar. Track this stat over time for all your contacts.</p>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+<div id="integration" class="feature-category-block">
+    <h3 class="category-header">Integration</h3>
+    
+    <div class="features-grid-detailed">
+        <div class="feature-card-detailed">
+            <h4>Download... everything.</h4>
+            <p>Keep your data home. Download all the data you can get: people, interactions, polls answers. You name it.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Iframe mode</h4>
+            <p>You can choose to integrate a YouTube live, Twitch, Livestorm or any other live video stream into your webinar room.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Integrations with your stack</h4>
+            <p>Getting data is one thing. Making it actionable is another. We provide integrations with more than 1000 apps through Zapier.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Export video to Youtube</h4>
+            <p>It's your webinar, your data, do whatever you want. Need a Youtube export? Download your webinar as a MP4 file and upload it on Youtube.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Zapier integration</h4>
+            <p>With our Zapier integration you can connect Livestorm to over 1000+ apps.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>CRM integrations</h4>
+            <p>With our native integrations you can sync your attendees with Hubspot or Pipedrive.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Tag integration</h4>
+            <p>Add Google Analytics, Intercom, Drift, and more to your registration pages.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Slack integration</h4>
+            <p>Get registration notifications on Slack, in real-time, with additional information.</p>
+        </div>
+        <div class="feature-card-detailed">
+            <h4>Export PDF reports</h4>
+            <p>Doing post-mortems is hard. We compile your data, add your logo and voilà: a branded report.</p>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+                </div>
+                
+        
+            </div>
+    </section>
+
+    <section class="final-cta-section">
+    <div class="cta-container">
+        <h2>One video communications platform for every team</h2>
+        <p>Livestorm is built for everyone, from startups to big enterprises. We're already working with brands you know.</p>
+
+        <button class="btn-primary">Read their stories</button>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="final-cta-section language-bg">
+    <div class="cta-container">
+        <h2>Bonjour, Livestorm also speaks French</h2>
+        <p>Livestorm comes with built-in translations for emails, landing pages and webinar rooms.</p>
+        
+        <button class="btn-primary">Try Livestorm for free now</button>
+
+        <div class="language-footer">
+            <p>Livestorm is also available in:</p>
+            <div class="icon-grid-placeholder small"></div>
+            <a href="#" class="blue-link">Did not find yours? Ask us.</a>
+        </div>
+    </div>
+</section>
+
+<!--Footer-->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-column language-col">
+                <ul class="footer-links">
+                    <li><a href="#"><span class="lang-code">US</span> English</a></li>
+                    <li><a href="#"><span class="lang-code">FR</span> French</a></li>
+                    <li><a href="#"><span class="lang-code">ES</span> Spanish</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">COMPANY</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Integrations</a></li>
+                    <li><a href="#">Help us</a></li>
+                    <li><a href="#">Press Kit</a></li>
+                    <li><a href="#">Jobs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">WEBINAR USE CASES</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Product demos</a></li>
+                    <li><a href="#">Customer Training</a></li>
+                    <li><a href="#">Online Courses</a></li>
+                    <li><a href="#">Video Podcasts & Interviews</a></li>
+                    <li><a href="#">See all use cases</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">NEED HELP</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Contact Sales</a></li>
+                    <li><a href="#">Help Docs</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Get a live demo</a></li>
+                    <li><a href="#">Webinar Software Comparison</a></li>
+                    <li><a href="#">Enterprise</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">CONTENT</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Free Webinar Software</a></li>
+                    <li><a href="#">Ebook</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Customer Stories</a></li>
+                    <li><a href="#">Industry Highlights</a></li>
+                    <li><a href="#">Webinar Statistics</a></li>
+                    <li><a href="#">Webinar Promotion</a></li>
+                    <li><a href="#">SaaSCast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">FOLLOW US</h4>
+                <ul class="footer-links social-links">
+    <li><a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a></li>
+    <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+    <li><a href="#"><i class="fa-brands fa-angellist"></i> AngelList</a></li>
+    <li><a href="#"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+    <li><a href="#"><i class="fa-brands fa-soundcloud"></i> Soundcloud</a></li>
+</ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2020 Livestorm SAS</p>
+            <ul class="legal-links">
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Legal Notice</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+    <div class="cookie-banner">
+        <h3>Can we store cookies?</h3>
+        <p>These will be used to power Essentials, Functionals, and Marketing.</p>
+        <div class="cookie-actions">
+            <a href="#">Customize</a>
+            <div class="cookie-buttons">
+                <button class="btn-sm btn-blue">No</button>
+                <button class="btn-sm btn-blue">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-lock">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="#3b4bfb">
+            <path d="M12 17a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd" d="M6 8V6a6 6 0 1112 0v2h2a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V10a2 2 0 012-2h2zm2-2v2h8V6a4 4 0 00-8 0z" clip-rule="evenodd" />
+        </svg>
+    </div>
+   
+
+    <script src="pricing.js"></script>
+</body>
+</html>
