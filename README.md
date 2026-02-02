@@ -102,7 +102,7 @@ This demonstrates direct DOM manipulation without any libraries.
 
 ## Deployment
 
-The project was deployed as a static site using Netlify or Vercel. This shows understanding of how frontend projects are shipped and accessed via a live URL.
+The project was deployed as a static site using Vercel. This shows understanding of how frontend projects are shipped and accessed via a live URL.
 
 ---
 
@@ -124,7 +124,7 @@ The project was deployed as a static site using Netlify or Vercel. This shows un
 
 ## Live Demo
 
-👉 Live URL: (add your deployed link here)
+👉 Live URL: https://livestorm.vercel.app/
 
 ---
 
